@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+import logging
 import time
 from joblib import (
     Parallel,
@@ -9,8 +10,13 @@ from joblib import (
 )
 import civis
 
+logging.basicConfig()
+logging.getLogger('civis').setLevel('DEBUG')
+
 
 def test_job(n):
+    logging.basicConfig()
+    logging.getLogger('civis').setLevel('DEBUG')
     time.sleep(120)
     print(n)
 

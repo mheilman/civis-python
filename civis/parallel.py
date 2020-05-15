@@ -732,10 +732,14 @@ class _CivisBackendResult:
                 fut.result_fetched = True
                 print('cancelled={} \tjob_id={}'.format(fut.cancelled(),
                                                         fut.job_id))
+                print(fut._civis_state)
                 if not fut.cancelled() and not fut.exception():
                     # The next job will start when this callback is called.
                     # Only run it if the job was a success.
+                    print('running joblib_callback')
                     joblib_callback(fut.remote_func_output)
+                else:
+                    print('not running calljoblib_callbackback')
 
         return _fetch_result
 
@@ -854,6 +858,7 @@ class _CivisBackend(ParallelBackendBase):
         # In that case, we're not going to finish computations, so
         # we should free up Platform resources in any remaining jobs.
         self.executor.cancel_all()
+        print("abort_everything")
         if not ensure_ready:
             self.executor.shutdown(wait=False)
 

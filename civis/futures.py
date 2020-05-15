@@ -488,7 +488,9 @@ class _CivisExecutor(Executor, metaclass=ABCMeta):
 
     def cancel_all(self):
         """Send cancel requests for all running Civis jobs"""
+        print("cancel_all")
         for f in self._futures:
+            print("cancel_all: cancelling a future")
             # The ContainerFuture is smart enough to only cancel the run
             # if the run is still in progress.
             f.cancel()
