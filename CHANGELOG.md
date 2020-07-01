@@ -3,6 +3,11 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## Unreleased
+
+### Changed
+- Revised some documentation of `table_columns` parameters for I/O functions. (#)
+
+## 1.14.2 - 2020-06-03
 ### Added
 - Added support for Python 3.8 (#391)
 

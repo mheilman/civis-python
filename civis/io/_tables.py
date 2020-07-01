@@ -663,7 +663,8 @@ def dataframe_to_civis(df, database, table, api_key=None, client=None,
         The second column in a compound sortkey for the table.
     table_columns : list[Dict[str, str]], optional
         A list of dictionaries corresponding to the columns in
-        the source file. Each dictionary should have keys
+        the source file. The order of the list should match the order of
+        columns in the dataframe. Each dictionary should have keys
         for column "name" and "sqlType". The import will only copy these
         columns regardless if there are more columns in the table.
     headers : bool, optional [DEPRECATED]
@@ -806,7 +807,8 @@ def csv_to_civis(filename, database, table, api_key=None, client=None,
         The second column in a compound sortkey for the table.
     table_columns : list[Dict[str, str]], optional
         A list of dictionaries corresponding to the columns in
-        the source file. Each dictionary should have keys
+        the source file. The order of the list should match the order of
+        columns in the file. Each dictionary should have keys
         for column "name" and "sqlType". The import will only copy these
         columns regardless if there are more columns in the table.
     delimiter : string, optional
@@ -935,7 +937,8 @@ def civis_file_to_table(file_id, database, table, client=None,
         The second column in a compound sortkey for the table.
     table_columns : list[Dict[str, str]], optional
         A list of dictionaries corresponding to the columns in
-        the source file. Each dictionary should have keys
+        the source file. The order of the list should match the order of
+        columns in the file. Each dictionary should have keys
         for column "name" and "sqlType". The import will only copy these
         columns regardless if there are more columns in the table.
     primary_keys: list[str], optional
@@ -1374,11 +1377,11 @@ def _check_column_types(table_columns, file_columns, output_obj_id):
     Parameters
     ----------
 
-    table_columns: List[Dict[str, str]]
+    table_columns : List[Dict[str, str]]
       The columns for the table to be created.
-    file_columns: List[Dict[str, str]]
+    file_columns : List[Dict[str, str]]
       The columns detected by the Civis API for the file.
-    output_obj_id: int
+    output_obj_id : int
       The file ID under consideration; used for error messaging.
 
     Raises
